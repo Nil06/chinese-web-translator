@@ -52,6 +52,7 @@ async function translateBatch(texts, settings) {
   if (cleanTexts.length === 0) {
     return [];
   }
+  assertLocalBackendUrl(settings.backendUrl);
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 120000);
@@ -90,6 +91,20 @@ async function translateBatch(texts, settings) {
     return translations.map((translation) => String(translation || ""));
   } finally {
     clearTimeout(timeoutId);
+  }
+}
+
+function assertLocalBackendUrl(url) {
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new Error("Backend URL is invalid");
+  }
+
+  const localHosts = new Set(["127.0.0.1", "localhost", "[::1]"]);
+  if (parsed.protocol !== "http:" || !localHosts.has(parsed.hostname)) {
+    throw new Error("Backend URL must be a local HTTP endpoint");
   }
 }
 

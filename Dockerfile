@@ -12,10 +12,14 @@ ENV MT_HOST=0.0.0.0 \
     CWT_MODELS="zh-Hans_en en_zh-Hans en_fr fr_en" \
     CWT_OFFLINE_ONLY=0
 
-RUN npm install -g "mtranserver@${MTRANSERVER_VERSION}"
+RUN npm install -g "mtranserver@${MTRANSERVER_VERSION}" \
+    && mkdir -p /data \
+    && chown -R node:node /data
 
 COPY docker/entrypoint.sh /usr/local/bin/chinese-web-translator-entrypoint
 RUN chmod +x /usr/local/bin/chinese-web-translator-entrypoint
+
+USER node
 
 VOLUME ["/data"]
 EXPOSE 8989

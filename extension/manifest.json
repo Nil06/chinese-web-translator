@@ -4,11 +4,9 @@
   "version": "0.2.0",
   "description": "Translate Chinese and English web pages in place through a local offline backend.",
   "permissions": [
-    "activeTab",
     "storage"
   ],
   "host_permissions": [
-    "<all_urls>",
     "http://127.0.0.1/*",
     "http://localhost/*"
   ],

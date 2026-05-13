@@ -96,6 +96,23 @@ The split is intentional:
 - models are stored locally;
 - no browser tab needs direct access to model files.
 
+## Security Model
+
+Chinese Web Translator is designed to be local-first, but it is still a browser extension that can read page text when enabled.
+
+What the project does to reduce risk:
+
+- The backend binds to `127.0.0.1` in native mode.
+- Docker publishes the backend only on `127.0.0.1`, not on your LAN.
+- The extension only accepts local HTTP backend URLs: `127.0.0.1`, `localhost`, or `[::1]`.
+- No translation request is sent to a cloud API by default.
+- The Docker container runs as the unprivileged `node` user.
+- The extension does not use `eval`, remote scripts, or `innerHTML` for translated content.
+
+Important tradeoff:
+
+- The content script matches all URLs so it can translate arbitrary pages. Keep auto-translate disabled on sensitive websites if you do not want their text sent to your local backend.
+
 ## Quick Start
 
 ### 1. Start The Local Backend
@@ -244,6 +261,7 @@ http://127.0.0.1:8989/translate/batch
 - Closed Shadow DOM and some iframes are not translated.
 - Very dynamic pages may need a manual re-run.
 - Local MT is usually less nuanced than high-end cloud translation systems.
+- MTranServer is a third-party backend dependency. Pinning is used, but releases should still be reviewed before version bumps.
 
 ## Repository Layout
 
