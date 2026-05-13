@@ -1,0 +1,16 @@
+[Unit]
+Description=Chinese Web Translator local backend
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__PROJECT_DIR__
+ExecStart=__PROJECT_DIR__/start-local-server.sh
+Restart=on-failure
+RestartSec=5
+Environment=CWT_HOST=127.0.0.1
+Environment=CWT_PORT=8989
+Environment=CWT_LOG_LEVEL=warn
+
+[Install]
+WantedBy=default.target

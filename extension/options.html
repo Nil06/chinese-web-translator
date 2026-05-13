@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chinese Web Translator Settings</title>
+    <link rel="stylesheet" href="styles/options.css">
+  </head>
+  <body>
+    <main class="settings">
+      <header>
+        <h1>Chinese Web Translator</h1>
+        <p>Local translation settings for Chinese and English web pages.</p>
+      </header>
+
+      <section>
+        <label class="field">
+          <span>Local server URL</span>
+          <input id="backendUrl" type="url" spellcheck="false">
+        </label>
+
+        <label class="field">
+          <span>Direction</span>
+          <select id="direction">
+            <option value="zh-Hans|en">Chinese -> English</option>
+            <option value="en|zh-Hans">English -> Chinese</option>
+            <option value="zh-Hans|fr">Chinese -> French</option>
+            <option value="fr|zh-Hans">French -> Chinese</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="grid">
+        <label class="field">
+          <span>Texts per batch</span>
+          <input id="batchSize" type="number" min="1" max="30" step="1">
+        </label>
+
+        <label class="field">
+          <span>Characters per batch</span>
+          <input id="maxCharsPerBatch" type="number" min="300" max="8000" step="100">
+        </label>
+
+        <label class="field">
+          <span>Items per pass</span>
+          <input id="maxNodesPerPass" type="number" min="50" max="3000" step="50">
+        </label>
+      </section>
+
+      <section class="checks">
+        <label>
+          <input id="translateDynamicContent" type="checkbox">
+          Translate content added after page load
+        </label>
+        <label>
+          <input id="showOriginalOnHover" type="checkbox">
+          Show original text on hover
+        </label>
+      </section>
+
+      <footer>
+        <button id="save" type="button">Save</button>
+        <span id="saved"></span>
+      </footer>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

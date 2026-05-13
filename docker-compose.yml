@@ -1,0 +1,21 @@
+services:
+  chinese-web-translator-server:
+    build:
+      context: .
+      args:
+        MTRANSERVER_VERSION: ${MTRANSERVER_VERSION:-4.0.33}
+    image: chinese-web-translator-server:local
+    container_name: chinese-web-translator-server
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${CWT_PORT:-8989}:8989"
+    environment:
+      MT_PORT: 8989
+      MT_LOG_LEVEL: warn
+      CWT_MODELS: ${CWT_MODELS:-zh-Hans_en en_zh-Hans en_fr fr_en}
+      CWT_OFFLINE_ONLY: ${CWT_OFFLINE_ONLY:-0}
+    volumes:
+      - chinese-web-translator-data:/data
+
+volumes:
+  chinese-web-translator-data:
