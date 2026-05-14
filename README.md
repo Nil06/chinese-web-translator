@@ -5,6 +5,10 @@
 Private, local, no-cost webpage translation for exploring the Chinese internet.
 
 <p>
+  <strong>English</strong> · <a href="README.fr.md">Français</a> · <a href="README.zh-CN.md">简体中文</a>
+</p>
+
+<p>
   <img alt="Chrome" src="https://img.shields.io/badge/Chrome-WebExtension-4285F4">
   <img alt="Firefox" src="https://img.shields.io/badge/Firefox-WebExtension-FF7139">
   <img alt="Backend" src="https://img.shields.io/badge/Backend-MTranServer-0B7285">
@@ -14,7 +18,7 @@ Private, local, no-cost webpage translation for exploring the Chinese internet.
 </p>
 
 <p>
-  Translate Chinese and English websites directly in the browser using local CPU models.
+  Translate Chinese, English, and French websites directly in the browser using local CPU models.
   No paid API, no token, no usage meter, no page content sent to a cloud translation service.
 </p>
 
@@ -39,7 +43,7 @@ Private, local, no-cost webpage translation for exploring the Chinese internet.
   </tr>
   <tr>
     <td><strong>Bidirectional</strong></td>
-    <td>Default route is <code>Chinese -> English</code>, with <code>English -> Chinese</code> for Chinese readers.</td>
+    <td>Default route is <code>Chinese -> English</code>, with reverse and French routes included.</td>
   </tr>
   <tr>
     <td><strong>Auto mode</strong></td>
@@ -163,7 +167,7 @@ Firefox:
 
 ### 3. Browse
 
-Open a Chinese or English page, click the extension icon, choose the translation direction, then translate the page.
+Open a Chinese, English, or French page, click the extension icon, choose the translation direction, then translate the page.
 
 Enable `Auto translate` if you want pages translated as soon as you arrive.
 
